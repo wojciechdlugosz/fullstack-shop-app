@@ -14,11 +14,22 @@ model Product {
   id String @id @default(uuid())
   name String @unique
   price Int
-  description String
+  description_title String
+  description_first_paragraph String @db.Text
+  description_subtitle String
+  description_second_paragraph String @db.Text
   category String
-  img String
+  main_img String
+  gallery String
+  volume Decimal?
+  height Decimal?
+  width Decimal?
+  length Decimal?
+  weight Decimal?
+
   orders Order[]
 }
+
 
 model Order {
   id String @id @default(uuid())
