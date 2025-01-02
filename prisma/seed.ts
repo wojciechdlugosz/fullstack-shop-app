@@ -14,7 +14,7 @@ function getProducts() {
       description_subtitle: 'Szukasz styropianu dla wymagających?',
       description_second_paragraph:
         'Deklarowany współczynnik przewodzenia ciepła: λD≤0,036 W/mK. Naprężenia ściskające przy 10% odkształceniu: CS(10)≥100 kPa. Wytrzymałość na zginanie: BS≥150 kPa. Minimalna waga wyrobu: 18,0 kg/m3. Klasa reakcji na ogień: E.',
-      category: 'dach / podłoga',
+      category: 'podloga',
       main_img: 'austrotherm_eps_100_1.jpg',
       gallery:
         'austrotherm_eps_100_2.jpg,austrotherm_eps_100_3.jpg,austrotherm_eps_100_4.jpg',
@@ -96,7 +96,7 @@ function getProducts() {
       description_subtitle: 'Szukasz styropianu dla wymagających?',
       description_second_paragraph:
         'Deklarowany współczynnik przewodzenia ciepła: λD≤0,035 W/mK. Naprężenia ściskające przy 10% odkształceniu: CS(10)≥150 kPa. Wytrzymałość na zginanie: BS≥200 kPa. Minimalna waga wyrobu: 24,0 kg/m3. Klasa reakcji na ogień: E.',
-      category: 'podłoga',
+      category: 'podloga',
       main_img: 'austrotherm_eps_parking_1.jpg',
       gallery:
         'austrotherm_eps_parking_2.jpg,austrotherm_eps_parking_3.jpg,austrotherm_eps_parking_4.jpg',
@@ -117,7 +117,7 @@ function getProducts() {
       description_subtitle: 'Szukasz styropianu dla wymagających?',
       description_second_paragraph:
         'Deklarowany współczynnik przewodzenia ciepła: λD≤0,031 W/mK. Naprężenia ściskające przy 10% odkształceniu: CS(10)≥100 kPa. Wytrzymałość na zginanie: BS≥150 kPa. Minimalna waga wyrobu: 18,0 kg/m3. Klasa reakcji na ogień: E.',
-      category: 'podłoga',
+      category: 'podloga',
       main_img: 'austrotherm_eps_premium_100_1.jpg',
       gallery: 'austrotherm_eps_premium_100_1.jpg,austrotherm_eps_premium_100_1.jpg,austrotherm_eps_premium_100_1.jpg',
       volume: 0.3,

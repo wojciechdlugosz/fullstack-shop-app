@@ -1,0 +1,82 @@
+@import './../../../styles/settings.scss';
+
+.navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-main;
+    gap: 1.5rem;
+    transition: 1s;
+    transform: translateY(-100vh);
+
+    @media (min-width: 769px) {
+        position: static;
+        transform: none;
+        background-color: transparent;
+    }
+
+    &___responsive {
+        @extend .navigation;
+        transform: none;
+        height: 100%;
+        flex-direction: column;
+    }
+    
+    &__btn {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 1.5rem;
+        color: $color-dark;
+        transition: $transition-color;
+        &:hover {
+            color: $color-primary;
+        }
+
+        @media (min-width: 769px) {
+            display: none;
+        }
+
+        &___hide {
+            @extend .navigation__btn;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+
+        &___show {
+            @extend .navigation__btn;
+        }
+    }
+
+    &__linkList {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 0;
+
+        @media (min-width: 769px) {
+            flex-direction: row;
+        }
+
+        &__link {
+            text-transform: uppercase;
+            transition: $transition-color;
+            &:hover {
+                color: $color-primary;
+            }
+            &___active {
+                @extend .navigation__linkList__link;
+                color: $color-primary;
+            }
+        }
+    
+    }
+
+}
