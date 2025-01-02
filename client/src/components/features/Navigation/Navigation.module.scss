@@ -25,13 +25,14 @@
         transform: none;
         height: 100%;
         flex-direction: column;
+        z-index: 5;
     }
     
     &__btn {
         background-color: transparent;
         border: none;
         outline: none;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         color: $color-dark;
         transition: $transition-color;
         &:hover {
@@ -66,6 +67,7 @@
         }
 
         &__link {
+            font-size: 0.9rem;
             text-transform: uppercase;
             transition: $transition-color;
             &:hover {

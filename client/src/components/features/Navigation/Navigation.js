@@ -31,7 +31,7 @@ const Navigation = () => {
                 : styles.navigation__linkList__link
             }
           >
-            wszystkie produkty
+            produkty
           </NavLink>
           <NavLink
             to="/category/fasada"

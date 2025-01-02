@@ -1,7 +1,7 @@
 import Navigation from '../../features/Navigation/Navigation';
 import styles from './Header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
-import { BsBagHeartFill } from 'react-icons/bs';
+import { BsBagPlusFill } from 'react-icons/bs';
 
 const Header = () => (
   <header className={styles.header}>
@@ -22,7 +22,7 @@ const Header = () => (
         }
         to="/cart"
       >
-        <BsBagHeartFill />
+        <BsBagPlusFill />
       </NavLink>
     </div>
   </header>

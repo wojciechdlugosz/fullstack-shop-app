@@ -1,0 +1,56 @@
+@import '../../../styles/settings.scss';
+
+.redirectBox {
+    position: relative;
+
+    &__imgContainer {
+        position: relative;
+        height: 250px;
+        width: 250px;
+
+        @media (min-width: 1024px) {
+            height: 290px;
+            width: 290px;    
+        }
+
+        &::after {
+            content: "";
+            background-color: $color-primary;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            opacity: 0.4;
+            top: 10px;
+            left: 10px;
+            transition: top .15s linear, left .15s linear;
+        }
+
+        &:hover::after {
+            top: 0;
+            left: 0;    
+        }
+    
+        &__img {
+            height: 90%;
+            width: 90%;
+            object-fit: cover;
+        }
+    }
+
+    &__txt {
+        z-index: 2;
+        position: absolute;
+        bottom: 20px;
+        right: 0;
+        text-transform: uppercase;
+        font-family: $font-header;
+        font-size: 1.5rem;
+        font-weight: 500;
+
+        @media (min-width: 1024px) {
+            font-size: 2rem;
+        }    
+
+    }
+
+}
