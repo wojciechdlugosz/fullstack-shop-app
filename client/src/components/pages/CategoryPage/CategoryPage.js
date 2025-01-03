@@ -1,12 +1,12 @@
-import ProductSummary from "../../common/ProductSummary/ProductSummary";
+import ProductSummary from '../../common/ProductSummary/ProductSummary';
+import styles from './CategoryPage.module.scss';
 
 const CategoryPage = () => {
-    return (
-        <>
-        <p>list of category products</p>
-        <ProductSummary />
-        </>
-    );
+  return (
+    <div className={styles.showcase}>
+      <ProductSummary />
+    </div>
+  );
 };
 
 export default CategoryPage;

@@ -1,0 +1,13 @@
+@import '../../../styles/settings.scss';
+
+.showcase {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+
+    @media (min-width: 62rem) {
+        gap: 60px;
+    }
+    
+}

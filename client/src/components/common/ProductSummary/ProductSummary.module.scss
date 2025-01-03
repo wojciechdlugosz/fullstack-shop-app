@@ -1,0 +1,74 @@
+@import '../../../styles/settings.scss';
+
+.productBox {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 200px;
+
+    &::before {
+        content: "";
+        background-color: $color-primary;
+        position: absolute;
+        height: 30%;
+        width: 120%;
+        opacity: 0.4;
+        bottom: 50px;
+        left: -20px;
+    }
+
+    &__imgContainer {
+        &__img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__description {
+        z-index: 1;
+        position: relative;
+        top: -20px;
+
+        &___title {
+            font-size: 1rem;
+            margin: 0 0 24px 0;
+        }
+        
+        &___price {
+            font-size: 1rem;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 6px;
+        justify-content: flex-end;
+        position: relative;
+        bottom: 30px;
+    }
+
+}
+
+@media (min-width: 62rem) {
+
+    .productBox {
+        width: 250px;
+
+        &::before {
+            left: -25px;
+        }
+    
+        &__description {
+            top: -24px;
+
+            &___title {
+                font-size: 1.2rem;
+            }
+
+            &___price {
+                font-size: 1.3rem;
+            }
+        }
+    }
+}

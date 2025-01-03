@@ -14,7 +14,7 @@
     transition: 1s;
     transform: translateY(-100vh);
 
-    @media (min-width: 769px) {
+    @media (min-width: 62rem) {
         position: static;
         transform: none;
         background-color: transparent;
@@ -39,7 +39,7 @@
             color: $color-primary;
         }
 
-        @media (min-width: 769px) {
+        @media (min-width: 62rem) {
             display: none;
         }
 
@@ -62,7 +62,7 @@
         gap: 20px;
         padding: 0;
 
-        @media (min-width: 769px) {
+        @media (min-width: 62rem) {
             flex-direction: row;
         }
 

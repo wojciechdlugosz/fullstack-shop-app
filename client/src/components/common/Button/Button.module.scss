@@ -1,0 +1,17 @@
+@import '../../../styles/settings.scss';
+
+.button {
+    background-color: $color-secondary;
+    border: none;
+    color: $color-light;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px;
+    transition: $transition-background;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: $color-main;
+    }
+}

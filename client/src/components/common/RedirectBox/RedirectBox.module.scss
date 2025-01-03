@@ -8,9 +8,9 @@
         height: 250px;
         width: 250px;
 
-        @media (min-width: 1024px) {
-            height: 290px;
-            width: 290px;    
+        @media (min-width: 62rem) {
+            height:350px;
+            width: 350px;    
         }
 
         &::after {
@@ -42,12 +42,10 @@
         position: absolute;
         bottom: 20px;
         right: 0;
-        text-transform: uppercase;
-        font-family: $font-header;
         font-size: 1.5rem;
         font-weight: 500;
 
-        @media (min-width: 1024px) {
+        @media (min-width: 62rem) {
             font-size: 2rem;
         }    
 
