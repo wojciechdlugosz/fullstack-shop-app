@@ -2,9 +2,12 @@ import styles from './Navigation.module.scss';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { getAllCategories } from '../../../redux/productsRedux';
+import { useSelector } from 'react-redux';
 
 const Navigation = () => {
   const [isNavShown, setIsNavShown] = useState(false);
+  const categories = useSelector(getAllCategories);
 
   return (
     <>
@@ -31,38 +34,21 @@ const Navigation = () => {
                 : styles.navigation__linkList__link
             }
           >
-            produkty
+            wszystkie produkty
           </NavLink>
-          <NavLink
-            to="/category/fasada"
-            className={({ isActive }) =>
-              isActive
-                ? styles.navigation__linkList__link___active
-                : styles.navigation__linkList__link
-            }
-          >
-            fasada
-          </NavLink>
-          <NavLink
-            to="/category/podloga"
-            className={({ isActive }) =>
-              isActive
-                ? styles.navigation__linkList__link___active
-                : styles.navigation__linkList__link
-            }
-          >
-            podłoga
-          </NavLink>
-          <NavLink
-            to="/category/fundament"
-            className={({ isActive }) =>
-              isActive
-                ? styles.navigation__linkList__link___active
-                : styles.navigation__linkList__link
-            }
-          >
-            fundament
-          </NavLink>
+          {categories.map(({ name, text }) => (
+            <NavLink
+              key={name}
+              to={`/category/${name}`}
+              className={({ isActive }) =>
+                isActive
+                  ? styles.navigation__linkList__link___active
+                  : styles.navigation__linkList__link
+              }
+            >
+              {text}
+            </NavLink>
+          ))}
           <NavLink
             to="/about"
             className={({ isActive }) =>

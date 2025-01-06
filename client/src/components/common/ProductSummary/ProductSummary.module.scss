@@ -5,15 +5,16 @@
     flex-direction: column;
     position: relative;
     width: 200px;
+    margin-bottom: 80px;
 
     &::before {
         content: "";
         background-color: $color-primary;
         position: absolute;
-        height: 30%;
+        height: 40%;
         width: 120%;
         opacity: 0.4;
-        bottom: 50px;
+        bottom: -80px;
         left: -20px;
     }
 
@@ -27,8 +28,8 @@
 
     &__description {
         z-index: 1;
-        position: relative;
-        top: -20px;
+        position: absolute;
+        bottom: -70px;
 
         &___title {
             font-size: 1rem;
@@ -44,8 +45,9 @@
         display: flex;
         gap: 6px;
         justify-content: flex-end;
-        position: relative;
-        bottom: 30px;
+        position: absolute;
+        bottom: -100px;
+        right: 0;
     }
 
 }
@@ -60,7 +62,7 @@
         }
     
         &__description {
-            top: -24px;
+            bottom: -50px;
 
             &___title {
                 font-size: 1.2rem;
