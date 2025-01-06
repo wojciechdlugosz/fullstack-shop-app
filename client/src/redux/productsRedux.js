@@ -4,6 +4,7 @@ import initialState from './initialState';
 
 //selectors
 export const getAllProducts = ({ products }) => products.data;
+export const getAllCategories = ({ products }) => products.categories;
 export const getRequests = ({ products }) => products.requests;
 export const getProductById = ({ products }, productId) =>
   products.data.find((product) => product.id === productId);

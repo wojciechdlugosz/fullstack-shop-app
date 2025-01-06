@@ -1,6 +1,23 @@
 const initialState = {
     data: [],
     requests: {},
-};
-
-export default initialState;
+    categories: [
+      {
+        name: 'fasada',
+        text: 'fasada',
+        img: 'fasada.jpg',
+      },
+      {
+        name: 'podloga',
+        text: 'podłoga',
+        img: 'podloga.jpg',
+      },
+      {
+        name: 'fundament',
+        text: 'fundament',
+        img: 'fundament.jpg',
+      },
+    ],
+  };
+  
+  export default initialState;

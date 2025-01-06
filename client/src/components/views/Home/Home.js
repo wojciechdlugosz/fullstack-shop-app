@@ -1,13 +1,19 @@
 import RedirectBox from '../../common/RedirectBox/RedirectBox';
 import styles from './Home.module.scss';
+import { useSelector } from 'react-redux';
+import { getAllCategories } from '../../../redux/productsRedux';
 
-const Home = () => (
-  <section className={styles.home}>
-    <RedirectBox category="all" text="produkty" img="all.jpg" />
-    <RedirectBox category="fasada" text="fasada" img="fasada.jpg" />
-    <RedirectBox category="podloga" text="podłoga" img="podloga.jpg" />
-    <RedirectBox category="fundament" text="fundament" img="fundament.jpg" />
-  </section>
-);
+const Home = () => {
+  const categories = useSelector(getAllCategories);
+
+  return (
+    <section className={styles.home}>
+      <RedirectBox category="all" text="wszystkie" img="all.jpg" />
+      {categories.map(({ name, text, img }) => (
+        <RedirectBox key={name} category={name} text={text} img={img} />
+      ))}
+    </section>
+  );
+};
 
 export default Home;
