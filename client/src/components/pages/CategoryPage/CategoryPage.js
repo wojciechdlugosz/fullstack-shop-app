@@ -1,13 +1,15 @@
 import ProductSummary from '../../common/ProductSummary/ProductSummary';
+import NotFound from '../../views/NotFound/NotFound';
+import Spinner from '../../common/Spinner/Spinner';
 import styles from './CategoryPage.module.scss';
 import { useParams } from 'react-router-dom';
 import {
   getProductsByCategory,
   getAllProducts,
   getAllCategories,
+  getRequests,
 } from '../../../redux/productsRedux';
 import { useSelector } from 'react-redux';
-import NotFound from '../../views/NotFound/NotFound';
 
 const CategoryPage = () => {
   const { category } = useParams();
@@ -16,6 +18,8 @@ const CategoryPage = () => {
     getProductsByCategory(state, category),
   );
   const allProducts = useSelector(getAllProducts);
+  const requests = useSelector(getRequests);
+  const request = requests['app/products/DATA_PRODUCTS'];
 
   if (
     !categories.some((cat) => cat.name === category) &&
@@ -25,15 +29,33 @@ const CategoryPage = () => {
   }
 
   return (
-    <div className={styles.showcase}>
-      {category === 'all'
-        ? allProducts.map(({ id, main_img, name, price }) => (
-            <ProductSummary key={id} img={main_img} name={name} price={price} />
-          ))
-        : categoryProducts.map(({ id, main_img, name, price }) => (
-            <ProductSummary key={id} img={main_img} name={name} price={price} />
-          ))}
-    </div>
+    <>
+      {request && request.pending && <Spinner />}
+      {request && request.error && (
+        <p>O nie, coś poszło nie tak :( Spróbuj później</p>
+      )}
+      {request && request.success && (
+        <div className={styles.showcase}>
+          {category === 'all'
+            ? allProducts.map(({ id, main_img, name, price }) => (
+                <ProductSummary
+                  key={id}
+                  img={main_img}
+                  name={name}
+                  price={price}
+                />
+              ))
+            : categoryProducts.map(({ id, main_img, name, price }) => (
+                <ProductSummary
+                  key={id}
+                  img={main_img}
+                  name={name}
+                  price={price}
+                />
+              ))}
+        </div>
+      )}
+    </>
   );
 };
 
