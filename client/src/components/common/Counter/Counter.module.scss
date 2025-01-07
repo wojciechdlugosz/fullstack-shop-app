@@ -1,0 +1,13 @@
+@import '../../../styles/settings.scss';
+
+.counter {
+    
+    &__input {
+        width: 40px;
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 8px;
+        background-color: $color-light;
+        border: none;
+    }
+}
