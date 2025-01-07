@@ -8,10 +8,12 @@ const Home = () => {
 
   return (
     <section className={styles.home}>
-      <RedirectBox category="all" text="wszystkie" img="all.jpg" />
-      {categories.map(({ name, text, img }) => (
-        <RedirectBox key={name} category={name} text={text} img={img} />
-      ))}
+      <div className={styles.home__elements}>
+        <RedirectBox category="all" text="wszystkie" img="all.jpg" />
+        {categories.map(({ name, text, img }) => (
+          <RedirectBox key={name} category={name} text={text} img={img} />
+        ))}
+      </div>
     </section>
   );
 };

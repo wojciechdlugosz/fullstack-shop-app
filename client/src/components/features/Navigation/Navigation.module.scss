@@ -14,12 +14,6 @@
     transition: 1s;
     transform: translateY(-100vh);
 
-    @media (min-width: 62rem) {
-        position: static;
-        transform: none;
-        background-color: transparent;
-    }
-
     &___responsive {
         @extend .navigation;
         transform: none;
@@ -32,15 +26,11 @@
         background-color: transparent;
         border: none;
         outline: none;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         color: $color-dark;
         transition: $transition-color;
         &:hover {
             color: $color-primary;
-        }
-
-        @media (min-width: 62rem) {
-            display: none;
         }
 
         &___hide {
@@ -62,22 +52,33 @@
         gap: 20px;
         padding: 0;
 
-        @media (min-width: 62rem) {
-            flex-direction: row;
-        }
-
         &__link {
-            font-size: 0.9rem;
             transition: $transition-color;
             &:hover {
                 color: $color-primary;
             }
+
             &___active {
                 @extend .navigation__linkList__link;
                 color: $color-primary;
             }
-        }
-    
+        }    
     }
+}
 
+@media (min-width: 62rem) {
+
+    .navigation {
+        position: static;
+        transform: none;
+        background-color: transparent;
+
+        &__btn {
+            display: none;    
+        }
+
+        &__linkList {
+            flex-direction: row;
+        }
+    }
 }

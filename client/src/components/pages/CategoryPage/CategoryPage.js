@@ -30,7 +30,7 @@ const CategoryPage = () => {
   }
 
   return (
-    <div className={styles.showcase}>
+    <section className={styles.showcase}>
       <aside className={styles.showcase__nav}>
         <SideNavigation />
       </aside>
@@ -59,7 +59,7 @@ const CategoryPage = () => {
               ))}
         </div>
       )}
-    </div>
+    </section>
   );
 };
 
