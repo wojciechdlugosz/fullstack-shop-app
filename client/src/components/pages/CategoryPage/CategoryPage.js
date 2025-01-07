@@ -1,6 +1,7 @@
 import ProductSummary from '../../common/ProductSummary/ProductSummary';
 import NotFound from '../../views/NotFound/NotFound';
 import Spinner from '../../common/Spinner/Spinner';
+import SideNavigation from '../../features/SideNavigation/SideNavigation';
 import styles from './CategoryPage.module.scss';
 import { useParams } from 'react-router-dom';
 import {
@@ -29,13 +30,16 @@ const CategoryPage = () => {
   }
 
   return (
-    <>
+    <div className={styles.showcase}>
+      <aside className={styles.showcase__nav}>
+        <SideNavigation />
+      </aside>
       {request && request.pending && <Spinner />}
       {request && request.error && (
         <p>O nie, coś poszło nie tak :( Spróbuj później</p>
       )}
       {request && request.success && (
-        <div className={styles.showcase}>
+        <div className={styles.showcase__elements}>
           {category === 'all'
             ? allProducts.map(({ id, main_img, name, price }) => (
                 <ProductSummary
@@ -55,7 +59,7 @@ const CategoryPage = () => {
               ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

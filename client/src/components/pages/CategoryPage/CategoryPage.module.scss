@@ -1,13 +1,43 @@
 @import '../../../styles/settings.scss';
 
 .showcase {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     justify-content: center;
-    gap: 50px;
 
-    @media (min-width: 62rem) {
+    &__nav {
+        display: none;
+    }
+
+    &__elements {
+        display: grid;
         gap: 60px;
     }
+}
+
+@media (min-width: 37.5rem) {
     
+    .showcase__elements {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 62rem) {
+
+    .showcase {
+        grid-template-columns: 1fr 3fr;
+        gap: 60px;
+
+        &__nav {
+            display: block;
+            margin-left: 40px;
+        }
+    }
+}
+
+@media (min-width: 75rem) {
+
+    .showcase__elements {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 70px;
+    }
 }

@@ -1,0 +1,22 @@
+@import '../../../styles/settings.scss';
+
+.sideNav {    
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: sticky;
+    top: 60px;
+
+    &__link {
+        transition: $transition-color;
+
+        &:hover {
+            color: $color-main;
+        }
+
+        &___active {
+            @extend .sideNav__link;
+            color: $color-dark;
+        }
+    }
+}
