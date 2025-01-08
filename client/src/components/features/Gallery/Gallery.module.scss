@@ -17,3 +17,21 @@
         }
     }
 }
+
+@media (min-width: 37.5rem) {
+
+    .gallery {
+        max-width: 500px;
+
+        &__min {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media (min-width: 75rem) {
+
+    .gallery__min {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

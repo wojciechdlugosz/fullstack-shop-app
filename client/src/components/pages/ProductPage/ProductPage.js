@@ -1,6 +1,6 @@
 import styles from './ProductPage.module.scss';
 import { useParams } from 'react-router-dom';
-import { IMGS_URL, API_URL } from '../../../config';
+import { API_URL } from '../../../config';
 import { useState, useEffect } from 'react';
 import Spinner from '../../common/Spinner/Spinner';
 import NotFound from '../../views/NotFound/NotFound';
@@ -71,19 +71,25 @@ const ProductPage = () => {
       )}
       {request && request.success && (
         <section className={styles.product}>
-          <Gallery
-            defaultImg={product.main_img}
-            imgs={product.gallery}
-            alt={product.name}
-          />
-          <h1>{product.name}</h1>
-          <span className={styles.product__price}>{product.price} zł</span>
-          <div className={styles.product__cartAdd}>
-            <Counter />
-            <Button content={<BsBagHeartFill />} onClick={handleAddToCart} />
+          <div className={styles.product__gallery}>
+            <Gallery
+              defaultImg={product.main_img}
+              imgs={product.gallery}
+              alt={product.name}
+            />
           </div>
           <div className={styles.product__description}>
-            <div className={styles.product__description___txt}>
+            <h1 className={styles.product__description___name}>
+              {product.name}
+            </h1>
+            <span className={styles.product__description___price}>
+              {product.price} zł
+            </span>
+            <div className={styles.product__description___cartAdd}>
+              <Counter />
+              <Button content={<BsBagHeartFill />} onClick={handleAddToCart} />
+            </div>
+            <div>
               <h2>{product.description_title}</h2>
               <p>{product.description_first_paragraph}</p>
               <h3>{product.description_subtitle}</h3>

@@ -1,22 +1,23 @@
 @import '../../../styles/settings.scss';
 
 .product {
-    max-width: 300px;
+    width: 300px;
     margin: 0 auto;
 
-    &__price {
-        font-size: 1.5rem;
-    }
-
-    &__cartAdd {
-        display: flex;
-        justify-content: flex-start;
-        gap: 40px;
-        margin-top: 22px;
-    }
 
     &__description {
         margin-top: 30px;
+
+        &___price {
+            font-size: 1.5rem;
+        }
+    
+        &___cartAdd {
+            display: flex;
+            justify-content: flex-start;
+            gap: 40px;
+            margin-top: 22px;
+        }    
 
         &___details {
             line-height: 16px;
@@ -24,4 +25,24 @@
         }
 
     }
+}
+
+
+@media (min-width: 37.5rem) {
+
+    .product {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        width: 90vw;
+        gap: 40px;
+
+        &__description {
+            margin-top: 0;
+
+            &___name {
+                margin-top:0;
+            }
+        }
+    }
+
 }
