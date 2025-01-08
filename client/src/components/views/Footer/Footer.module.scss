@@ -1,0 +1,38 @@
+@import '../../../styles/settings.scss';
+
+.footer {
+    background-color: $color-dark;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    color: $color-light;
+    margin-top: auto;
+
+    &__col {
+        margin: 0 20px;
+
+        &___header {
+            letter-spacing: .1em;
+            font-family: $font-header;
+            text-transform: uppercase;
+            font-style: normal;
+        }
+
+        &___icon {
+            padding-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        &___txt {
+            margin: 3px 0;
+        }
+    }
+}
+
+@media (min-width: 37.5rem) {
+
+    .footer {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
