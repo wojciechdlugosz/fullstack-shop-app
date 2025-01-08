@@ -15,19 +15,28 @@
 
     &__navbar {
         display: flex;
-        gap: 40px;
+        gap: 20px;
         align-items: center;
 
         &__cartIcon {
             color: $color-dark;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             transition: $transition-color;
+            display: flex;
+            align-items: center;
             &:hover {
                 color: $color-primary;
             }
+
             &___active {
                 @extend .header__navbar__cartIcon;
                 color: $color-primary;
+            }
+
+            &___amount {
+                font-size: 1rem;
+                margin-left: 5px;
+                letter-spacing: 0;
             }
         }
     }
