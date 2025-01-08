@@ -2,16 +2,19 @@ import styles from './ProductPage.module.scss';
 import { useParams } from 'react-router-dom';
 import { API_URL } from '../../../config';
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../common/Spinner/Spinner';
 import NotFound from '../../views/NotFound/NotFound';
 import Button from '../../common/Button/Button';
 import Counter from '../../common/Counter/Counter';
 import Gallery from '../../features/Gallery/Gallery';
-import { useSelector } from 'react-redux';
 import { getRequests } from '../../../redux/productsRedux';
 import { BsBagHeartFill } from 'react-icons/bs';
+import { getAllCartProducts } from '../../../redux/cartRedux';
+import { addToCartFunction } from '../../../utils/addToCartFunction';
 
 const ProductPage = () => {
+  const dispatch = useDispatch();
   const { id } = useParams();
 
   const requests = useSelector(getRequests);
@@ -20,6 +23,9 @@ const ProductPage = () => {
   const [product, setProduct] = useState(null);
   const [productExists, setProductExists] = useState(true);
   const [loading, setLoading] = useState(false);
+
+  const products = useSelector(getAllCartProducts);
+  const [amount, setAmout] = useState(1);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -59,8 +65,10 @@ const ProductPage = () => {
     return '';
   }
 
-  const handleAddToCart = () => {
-    // add to cart
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    const { id, name, main_img, price } = product;
+    addToCartFunction(id, name, main_img, price, amount, products, dispatch);
   };
 
   return (
@@ -86,7 +94,7 @@ const ProductPage = () => {
               {product.price} zł
             </span>
             <div className={styles.product__description___cartAdd}>
-              <Counter />
+              <Counter countProduct={setAmout} />
               <Button content={<BsBagHeartFill />} onClick={handleAddToCart} />
             </div>
             <div>

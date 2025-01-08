@@ -18,6 +18,9 @@ const initialState = {
         img: 'fundament.jpg',
       },
     ],
+    cart: {
+      products: [],
+    },
   };
   
   export default initialState;

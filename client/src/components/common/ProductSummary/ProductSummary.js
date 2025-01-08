@@ -4,10 +4,17 @@ import Button from '../Button/Button';
 import { FaEye } from 'react-icons/fa';
 import { BsBagHeartFill } from 'react-icons/bs';
 import { IMGS_URL } from '../../../config';
+import { getAllCartProducts } from '../../../redux/cartRedux';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCartFunction } from '../../../utils/addToCartFunction';
 
 const ProductSummary = ({ id, img, name, price }) => {
-  const handleAddToCart = () => {
-    //add to cart
+  const dispatch = useDispatch();
+  const products = useSelector(getAllCartProducts);
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    const amount = 1;
+    addToCartFunction(id, name, img, price, amount, products, dispatch);
   };
 
   return (
