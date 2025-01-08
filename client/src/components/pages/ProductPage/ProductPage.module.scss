@@ -1,0 +1,27 @@
+@import '../../../styles/settings.scss';
+
+.product {
+    max-width: 300px;
+    margin: 0 auto;
+
+    &__price {
+        font-size: 1.5rem;
+    }
+
+    &__cartAdd {
+        display: flex;
+        justify-content: flex-start;
+        gap: 40px;
+        margin-top: 22px;
+    }
+
+    &__description {
+        margin-top: 30px;
+
+        &___details {
+            line-height: 16px;
+            padding-top: 10px;
+        }
+
+    }
+}

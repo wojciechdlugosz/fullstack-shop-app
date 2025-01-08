@@ -5,19 +5,14 @@ import { FaEye } from 'react-icons/fa';
 import { BsBagHeartFill } from 'react-icons/bs';
 import { IMGS_URL } from '../../../config';
 
-const ProductSummary = ({ img, name, price }) => {
+const ProductSummary = ({ id, img, name, price }) => {
   const handleAddToCart = () => {
     //add to cart
   };
 
-  const productName = name.split(' ').join('').toLowerCase();
-
   return (
     <div className={styles.productBox}>
-      <Link
-        to={`/product/${productName}`}
-        className={styles.productBox__imgContainer}
-      >
+      <Link to={`/product/${id}`} className={styles.productBox__imgContainer}>
         <img
           className={styles.productBox__imgContainer__img}
           src={IMGS_URL + img}
@@ -31,7 +26,7 @@ const ProductSummary = ({ img, name, price }) => {
         </span>
       </div>
       <div className={styles.productBox__buttons}>
-        <Link to={`/product/${productName}`}>
+        <Link to={`/product/${id}`}>
           <Button content={<FaEye />} />
         </Link>
         <Button content={<BsBagHeartFill />} onClick={handleAddToCart} />

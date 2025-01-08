@@ -44,6 +44,7 @@ const CategoryPage = () => {
             ? allProducts.map(({ id, main_img, name, price }) => (
                 <ProductSummary
                   key={id}
+                  id={id}
                   img={main_img}
                   name={name}
                   price={price}
@@ -52,6 +53,7 @@ const CategoryPage = () => {
             : categoryProducts.map(({ id, main_img, name, price }) => (
                 <ProductSummary
                   key={id}
+                  id={id}
                   img={main_img}
                   name={name}
                   price={price}
