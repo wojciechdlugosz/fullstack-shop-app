@@ -56,6 +56,11 @@
 
         &__link {
             transition: $transition-color;
+            text-decoration: none;
+            color: $color-dark;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+        
             &:hover {
                 color: $color-primary;
             }

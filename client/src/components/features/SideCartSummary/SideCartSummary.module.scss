@@ -1,0 +1,59 @@
+@import './../../../styles/settings.scss';
+
+.cartSummary {
+    width: 300px;
+    height: 100vh;
+    background-color: lighten($color-primary, 40%);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $color-dark;
+    text-decoration: none;
+    animation: show 1s alternate;
+    @keyframes show {
+        from {
+            transform: translateX(100vw);
+        }
+        to {
+            transform: none;
+        }
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: .2em;
+        position: relative;
+        display: flex;
+        margin-bottom: 30px;
+        &:after {
+            content: "";
+            position: absolute;
+            border: 1px solid;
+            width: 120px;
+            bottom: -7px;
+        }
+    }
+
+    &__productsWrapper {
+        overflow: hidden;
+        overflow-y: auto;
+
+        &__product {
+            width: 100%;
+            padding: 0 10px;
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+    
+            &___img {
+                width: 30%;
+            }
+        }
+    
+    }
+}

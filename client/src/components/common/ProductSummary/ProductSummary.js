@@ -7,14 +7,22 @@ import { IMGS_URL } from '../../../config';
 import { getAllCartProducts } from '../../../redux/cartRedux';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCartFunction } from '../../../utils/addToCartFunction';
+import SideCartSummary from '../../features/SideCartSummary/SideCartSummary';
+import { useState } from 'react';
 
 const ProductSummary = ({ id, img, name, price }) => {
   const dispatch = useDispatch();
   const products = useSelector(getAllCartProducts);
+  const [sideCartSummary, setSideCartSummary] = useState(false);
+
   const handleAddToCart = (e) => {
     e.preventDefault();
     const amount = 1;
     addToCartFunction(id, name, img, price, amount, products, dispatch);
+    setSideCartSummary(true);
+    setTimeout(() => {
+      setSideCartSummary(false);
+    }, 2500);
   };
 
   return (
@@ -27,7 +35,7 @@ const ProductSummary = ({ id, img, name, price }) => {
         />
       </Link>
       <div className={styles.productBox__description}>
-        <h1 className={styles.productBox__description___title}>{name}</h1>
+        <h2 className={styles.productBox__description___title}>{name}</h2>
         <span className={styles.productBox__description___price}>
           {price} zł
         </span>
@@ -38,6 +46,7 @@ const ProductSummary = ({ id, img, name, price }) => {
         </Link>
         <Button content={<BsBagHeartFill />} onClick={handleAddToCart} />
       </div>
+      {sideCartSummary && <SideCartSummary />}
     </div>
   );
 };

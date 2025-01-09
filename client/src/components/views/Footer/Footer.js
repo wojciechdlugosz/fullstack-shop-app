@@ -9,7 +9,7 @@ import { FaTiktok } from 'react-icons/fa6';
 const Footer = () => (
   <footer className={styles.footer}>
     <div className={styles.footer__col}>
-      <h4 className={styles.footer__col___header}>Wpadnij tutaj</h4>
+    <p className={styles.footer__col___header}>Wpadnij tutaj</p>
       <span className={styles.footer__col___icon}>
         <FaInstagram />
       </span>
@@ -21,14 +21,16 @@ const Footer = () => (
       </span>
     </div>
     <div className={styles.footer__col}>
-      <h4 className={styles.footer__col___header}>Ważne sprawy</h4>
-      <p className={styles.footer__col___txt}>Wysyła i dostawa</p>
-      <p className={styles.footer__col___txt}>Zwroty</p>
-      <p className={styles.footer__col___txt}>Regulamin</p>
-      <p className={styles.footer__col___txt}>Polityka prywatności</p>
+    <p className={styles.footer__col___header}>Ważne sprawy</p>
+      <ul className={styles.footer__col___list}>
+        <li className={styles.footer__col___txt}>Wysyła i dostawa</li>
+        <li className={styles.footer__col___txt}>Zwroty</li>
+        <li className={styles.footer__col___txt}>Regulamin</li>
+        <li className={styles.footer__col___txt}>Polityka prywatności</li>
+      </ul>
     </div>
     <address className={styles.footer__col}>
-      <h4 className={styles.footer__col___header}>Kontakt</h4>
+      <p className={styles.footer__col___header}>Kontakt</p>
       <FaPhoneAlt /> +48 123 456 789
       <br />
       <MdAlternateEmail /> najlepszystyropian@example.pl

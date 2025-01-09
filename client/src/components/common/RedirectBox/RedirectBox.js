@@ -12,7 +12,7 @@ const RedirectBox = ({ category, text, img }) => (
           alt={text}
         />
       </div>
-      <h1 className={styles.redirectBox__txt}>{text}</h1>
+      <p className={styles.redirectBox__txt}>{text}</p>
     </Link>
   </div>
 );

@@ -14,7 +14,9 @@ import { useSelector } from 'react-redux';
 
 const CategoryPage = () => {
   const { category } = useParams();
+  console.log(category);
   const categories = useSelector(getAllCategories);
+  console.log(categories);
   const categoryProducts = useSelector((state) =>
     getProductsByCategory(state, category),
   );
@@ -31,6 +33,8 @@ const CategoryPage = () => {
 
   return (
     <section className={styles.showcase}>
+                <h1>{}</h1>
+
       <aside className={styles.showcase__nav}>
         <SideNavigation />
       </aside>

@@ -8,6 +8,7 @@ import NotFound from '../../views/NotFound/NotFound';
 import Button from '../../common/Button/Button';
 import Counter from '../../common/Counter/Counter';
 import Gallery from '../../features/Gallery/Gallery';
+import SideCartSummary from '../../features/SideCartSummary/SideCartSummary';
 import { getRequests } from '../../../redux/productsRedux';
 import { BsBagHeartFill } from 'react-icons/bs';
 import { getAllCartProducts } from '../../../redux/cartRedux';
@@ -23,8 +24,10 @@ const ProductPage = () => {
   const [product, setProduct] = useState(null);
   const [productExists, setProductExists] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [sideCartSummary, setSideCartSummary] = useState(false);
 
   const products = useSelector(getAllCartProducts);
+
   const [amount, setAmout] = useState(1);
 
   useEffect(() => {
@@ -69,6 +72,10 @@ const ProductPage = () => {
     e.preventDefault();
     const { id, name, main_img, price } = product;
     addToCartFunction(id, name, main_img, price, amount, products, dispatch);
+    setSideCartSummary(true);
+    setTimeout(() => {
+      setSideCartSummary(false);
+    }, 2500);
   };
 
   return (
@@ -104,16 +111,17 @@ const ProductPage = () => {
               <p>{product.description_second_paragraph}</p>
             </div>
             <div className={styles.product__description___details}>
-              <p>PARAMETRY:</p>
-              {product.volume ? <p>objętość: {product.volume} m3</p> : ''}
-              {product.height ? <p>wysokość: {product.height} m</p> : ''}
-              {product.weight ? <p>średnica: {product.weight} kg</p> : ''}
-              {product.length ? <p>długość: {product.length} m</p> : ''}
-              {product.width ? <p>szerokość: {product.width} m</p> : ''}
+            <p>PARAMETRY:</p>
+            {product.volume ? <p>objętość: {product.volume} m3</p> : ''}
+            {product.height ? <p>wysokość: {product.height} m</p> : ''}
+            {product.weight ? <p>waga: {product.weight} kg</p> : ''}
+            {product.length ? <p>długość: {product.length} m</p> : ''}
+            {product.width ? <p>szerokość: {product.width} m</p> : ''}
             </div>
           </div>
         </section>
       )}
+      {sideCartSummary && <SideCartSummary />}
     </>
   );
 };

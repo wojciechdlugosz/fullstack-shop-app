@@ -8,11 +8,6 @@
         height: 250px;
         width: 250px;
 
-        @media (min-width: 62rem) {
-            height:350px;
-            width: 350px;    
-        }
-
         &::after {
             content: "";
             background-color: $color-primary;
@@ -44,11 +39,24 @@
         right: 0;
         font-size: 1.5rem;
         font-weight: 500;
-
-        @media (min-width: 62rem) {
-            font-size: 2rem;
-        }    
-
+        text-transform: uppercase;
+        letter-spacing: .2em;
+        font-family: $font-header;
+        color: $color-dark;
     }
+}
 
+@media (min-width: 62rem) {
+
+    .redirectBox{
+
+        &__imgContainer {
+            height: 350px;
+            width: 350px;
+        }
+
+        &__txt {
+            font-size: 2rem;
+        }
+    }
 }
