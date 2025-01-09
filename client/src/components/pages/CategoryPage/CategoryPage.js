@@ -14,9 +14,9 @@ import { useSelector } from 'react-redux';
 
 const CategoryPage = () => {
   const { category } = useParams();
-  console.log(category);
+  //console.log(category);
   const categories = useSelector(getAllCategories);
-  console.log(categories);
+  //console.log(categories);
   const categoryProducts = useSelector((state) =>
     getProductsByCategory(state, category),
   );

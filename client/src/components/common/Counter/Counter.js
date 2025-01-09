@@ -6,7 +6,8 @@ import { FaMinus } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa';
 
 const Counter = ({ number, countProduct }) => {
-  const [count, setCount] = useState(1 || number);
+  const [count, setCount] = useState(number || 1);
+  console.log(number);
 
   useEffect(() => {
     countProduct(count);

@@ -1,0 +1,85 @@
+@import '../../../styles/settings.scss';
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+        margin-top: 0;
+        position: relative;
+
+        &:after {
+            content: "";
+            position: absolute;
+            border: 1px solid;
+            width: 120px;
+            bottom: -7px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+    }
+    
+    &__product {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin: 30px;
+        padding-bottom: 20px;
+        border-bottom: solid 1px $color-dark;
+
+        &__imgWrapper {
+            width: 100%;
+            text-align: center;
+
+            &___img {
+                width: 25%;
+            }
+        }
+
+        &__detail {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px
+        }
+
+        &__property {
+            font-weight: 700;
+        }
+
+        &__button {
+            width: 30px;
+            margin: 0 auto;
+            padding-top: 10px;
+        }
+    }
+}
+
+@media (min-width: 62rem) {
+
+    .cart {
+
+        &__product {
+            grid-template-columns: 1fr 1fr .5fr .7fr .5fr 1fr .5fr;
+            align-items: start;
+            gap: 20px;
+
+            &__imgWrapper {
+                &___img {
+                    width: 100%;
+                }
+            }
+
+            &__detail {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            &__button {
+                padding: 0;
+            }
+        }
+    }
+}
