@@ -1,6 +1,7 @@
 import styles from './OrderSummary.module.scss';
 import { getAllCartProducts } from '../../../redux/cartRedux';
 import { useSelector } from 'react-redux';
+import OrderForm from '../../features/OrderForm/OrderForm';
 
 const OrderSummary = () => {
   const orderProducts = useSelector(getAllCartProducts);
@@ -10,25 +11,25 @@ const OrderSummary = () => {
       <h1 className={styles.order__title}>podsumowanie zamówienia</h1>
       {orderProducts.map((product, index) => (
         <div key={index} className={styles.order__product}>
-          <p>
+          <p className={styles.order__product___detail}>
             Produkt:{' '}
             <span className={styles.order__product___property}>
               {product.name}
             </span>
           </p>
-          <p>
+          <p className={styles.order__product___detail}>
             Cena:{' '}
             <span className={styles.order__product___property}>
               {product.price} zł
             </span>
           </p>
-          <p>
+          <p className={styles.order__product___detail}>
             Ilość:{' '}
             <span className={styles.order__product___property}>
               {product.amount}
             </span>
           </p>
-          <p>
+          <p className={styles.order__product___detail}>
             Kwota:{' '}
             <span className={styles.order__product___property}>
               {product.price * product.amount} zł
@@ -46,6 +47,7 @@ const OrderSummary = () => {
           )}
         </div>
       ))}
+      <OrderForm />
     </section>
   );
 };

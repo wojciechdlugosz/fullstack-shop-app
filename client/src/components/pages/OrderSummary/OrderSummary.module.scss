@@ -13,7 +13,7 @@
             content: "";
             position: absolute;
             border: 1px solid;
-            width: 450px;
+            width: 200px;
             bottom: -7px;
             left: 50%;
             transform: translateX(-50%);
@@ -23,9 +23,13 @@
     &__product {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 10px;
-        margin: 30px;
+        margin: 30px 30px 0;
         border-bottom: solid 1px $color-dark;
+        padding-bottom: 10px;
+
+        &___detail {
+            margin: 0;
+        }
 
         &___property {
             font-weight: $bold;
@@ -34,6 +38,53 @@
         &___comment {
             display: flex;
             flex-wrap: wrap;
+            margin: 0;
+            gap: 3px;
+        }
+    }
+
+    &__details {
+        margin: 30px;
+        text-align: center;
+        
+        &__form {
+
+            &___delivery {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 5px;
+    
+                &___input {
+                    display: flex;
+                    align-items: baseline;
+                    gap: 7px;
+                }
+            }
+    
+            &___address {
+                text-align: center;
+    
+                &___input {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    margin-bottom: 20px;
+                }
+            }
+    
+        }
+
+    }
+}
+
+@media (min-width: 37.5rem) {
+
+    .order {
+        &__title {
+            &:after {
+                width: 450px;
+            }
         }
     }
 }

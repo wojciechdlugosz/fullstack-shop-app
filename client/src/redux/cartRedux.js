@@ -2,6 +2,7 @@ import initialState from './initialState';
 
 //selectors
 export const getAllCartProducts = ({ cart }) => cart.products;
+export const getAllDeliveryForms = ({ products }) => products.deliveryForms;
 
 // actions
 const createActionName = (actionName) => `app/cart/${actionName}`;
