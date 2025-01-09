@@ -33,7 +33,6 @@ const CategoryPage = () => {
 
   return (
     <section className={styles.showcase}>
-                <h1>{}</h1>
 
       <aside className={styles.showcase__nav}>
         <SideNavigation />

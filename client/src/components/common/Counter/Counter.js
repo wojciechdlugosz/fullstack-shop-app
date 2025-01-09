@@ -7,11 +7,10 @@ import { FaPlus } from 'react-icons/fa';
 
 const Counter = ({ number, countProduct }) => {
   const [count, setCount] = useState(number || 1);
-  console.log(number);
 
   useEffect(() => {
     countProduct(count);
-  }, [count, countProduct]);
+  }, [count]);
 
   const handleDecrement = () => {
     if (count > 1) setCount(count - 1);

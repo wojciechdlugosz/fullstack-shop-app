@@ -1,0 +1,50 @@
+@import '../../../styles/settings.scss';
+
+.order {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        margin-top: 0;
+        text-align: center;
+        position: relative;
+
+        &:after {
+            content: "";
+            position: absolute;
+            border: 1px solid;
+            width: 450px;
+            bottom: -7px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    &__product {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin: 30px;
+        border-bottom: solid 1px $color-dark;
+
+        &___property {
+            font-weight: $bold;
+        }
+
+        &___comment {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+}
+
+@media (min-width: 62rem) {
+
+    .order {
+        &__product {
+            grid-template-columns: 1fr .3fr .2fr .5fr .4fr;
+            align-items: start;
+            gap: 20px;
+        }    
+    }
+}

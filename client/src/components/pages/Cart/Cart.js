@@ -3,6 +3,7 @@ import {
   getAllCartProducts,
   removeCartProduct,
   addComment,
+  changeAmount,
 } from '../../../redux/cartRedux';
 import { useSelector, useDispatch } from 'react-redux';
 import { IMGS_URL } from '../../../config';
@@ -12,18 +13,26 @@ import { useState } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cartProducts = useSelector(getAllCartProducts);
-  console.log(cartProducts);
-  const [amounts, setAmounts] = useState(cartProducts.map(product => product.amount));
-  const [comments, setComments] = useState({});
-  console.log(comments);
 
-  const handleDelete = (id) => {
-    dispatch(removeCartProduct(id));
+  const cartProducts = useSelector(getAllCartProducts);
+
+  const [amounts, setAmounts] = useState(
+    cartProducts.map((product) => product.amount),
+  );
+  const [comments, setComments] = useState({});
+
+  const handleAmountChange = (productId, index, amount) => {
+    setAmounts((prevAmounts) => {
+      const newAmounts = [...prevAmounts];
+      newAmounts[index] = amount;
+      return newAmounts;
+    });
+    dispatch(changeAmount({ id: productId, amount }));
   };
 
   const handleCommentChange = (productId, comment) => {
@@ -31,15 +40,11 @@ const Cart = () => {
       ...prevComments,
       [productId]: comment,
     }));
-    dispatch(addComment({ id: productId, comment }))
+    dispatch(addComment({ id: productId, comment }));
   };
 
-  const handleAmountChange = (index, amount) => {
-    setAmounts(prevAmounts => {
-      const newAmounts = [...prevAmounts];
-      newAmounts[index] = amount;
-      return newAmounts;
-    });
+  const handleDelete = (id) => {
+    dispatch(removeCartProduct(id));
   };
 
   return (
@@ -67,7 +72,13 @@ const Cart = () => {
             </span>
           </div>
           <div className={styles.cart__product__detail}>
-            Ilość: <Counter number={product.amount} countProduct={(amount) => handleAmountChange(index, amount)} />
+            Ilość:{' '}
+            <Counter
+              number={product.amount}
+              countProduct={(amount) =>
+                handleAmountChange(product.id, index, amount)
+              }
+            />
           </div>
           <div className={styles.cart__product__detail}>
             Kwota:{' '}
@@ -92,7 +103,9 @@ const Cart = () => {
         </div>
       ))}
       {cartProducts.length > 0 ? (
-        <Button content="podsumowanie zamówienia" />
+        <Link to="/order">
+          <Button content="podsumowanie zamówienia" />
+        </Link>
       ) : (
         <>
           <p>Koszyk jest pusty</p>
