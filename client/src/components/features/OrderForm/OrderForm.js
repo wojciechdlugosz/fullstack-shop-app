@@ -38,75 +38,67 @@ const OrderForm = ({ productsPrice }) => {
   };
 
   return (
-    <div className={styles.orderForm}>
-      <h2>Wysyłka</h2>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className={styles.orderForm__form}
-      >
-        <div className={styles.orderForm__form___delivery}>
-          {deliveryForms.map((delivery, index) => (
-            <label
-              key={index}
-              className={styles.orderForm__form___delivery___input}
-            >
-              {delivery.name} - {delivery.price} zł
-              <input
-                type="radio"
-                name="deliveryOption"
-                value={delivery.name}
-                price={delivery.price}
-                checked={selectedDelivery === delivery.name}
-                onChange={handleDeliveryChange}
-              />
-            </label>
-          ))}
-          <div>Razem: {totalPrice} zł</div>
-        </div>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <div className={styles.form__delivery}>
+        <h2>Wysyłka</h2>
+        {deliveryForms.map((delivery, index) => (
+          <label key={index} className={styles.form__delivery___input}>
+            {delivery.name} - {delivery.price} zł
+            <input
+              type="radio"
+              name="deliveryOption"
+              value={delivery.name}
+              checked={selectedDelivery === delivery.name}
+              onChange={handleDeliveryChange}
+            />
+          </label>
+        ))}
+        <p className={styles.form__delivery___price}>Razem: {totalPrice} zł</p>
+      </div>
+      <div className={styles.form__address}>
         <h2>Adres dostawy</h2>
-        <div
-          className={styles.orderForm__form___address}
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <label className={styles.orderForm__form___address___input}>
-            Imię i nazwisko
-            <input
-              type="text"
-              name="user_name"
-              {...register('user_name', { required: true })}
-            />
-            {errors.user_name && <span>To pole jest wymagane</span>}
-          </label>
-          <label className={styles.orderForm__form___address___input}>
-            Email
-            <input
-              type="email"
-              name="user_email"
-              {...register('user_email', {
-                required: true,
-                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{3,}$/i,
-              })}
-            />
-            {errors.user_email && errors.user_email.type === 'required' && (
-              <span>To pole jest wymagane</span>
-            )}
-            {errors.user_email && errors.user_email.type === 'pattern' && (
-              <span>Podaj poprawny adres email</span>
-            )}{' '}
-          </label>
-          <label className={styles.orderForm__form___address___input}>
-            Adres
-            <input
-              type="text"
-              name="user_address"
-              {...register('user_address', { required: true })}
-            />
-            {errors.user_address && <span>To pole jest wymagane</span>}
-          </label>
-        </div>
-        <Button type="submit" content="zamawiam" />
-      </form>
-    </div>
+        <label className={styles.form__address___input}>
+          Imię i nazwisko
+          <input
+            type="text"
+            name="user_name"
+            {...register('user_name', { required: true, min: 3 })}
+          />
+          {errors.user_name && (
+            <span>
+              To pole jest wymagane i nie może mieć mniej niż 3 litery
+            </span>
+          )}
+        </label>
+        <label className={styles.form__address___input}>
+          Email
+          <input
+            type="email"
+            name="user_email"
+            {...register('user_email', {
+              required: true,
+              pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{3,}$/i,
+            })}
+          />
+          {errors.user_email && errors.user_email.type === 'required' && (
+            <span>To pole jest wymagane</span>
+          )}
+          {errors.user_email && errors.user_email.type === 'pattern' && (
+            <span>Podaj poprawny adres email</span>
+          )}{' '}
+        </label>
+        <label className={styles.form__address___input}>
+          Adres
+          <input
+            type="text"
+            name="user_address"
+            {...register('user_address', { required: true })}
+          />
+          {errors.user_address && <span>To pole jest wymagane</span>}
+        </label>
+      </div>
+      <Button type="submit" content="zamawiam" />
+    </form>
   );
 };
 

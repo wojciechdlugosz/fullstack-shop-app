@@ -1,35 +1,36 @@
 @import '../../../styles/settings.scss';
 
-.orderForm {
-    margin: 30px;
+.form {
+    margin: 0 30px;
     text-align: center;
         
-    &__form {
+    &__delivery {
+    
+        &___input {
+            display: flex;
+            align-items: baseline;
+            gap: 7px;
+            padding-top: 3px;
+            justify-content: center;
+        }
 
-        &___delivery {
+        &___price {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 1.2rem;
+            font-weight: $bold;    
+        }
+    }
+    
+    &__address {
+        margin: 40px 0;
+
+        &___input {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
-            gap: 5px;
-    
-            &___input {
-                display: flex;
-                align-items: baseline;
-                gap: 7px;
-            }
+            gap: 10px;
+            max-width: 450px;
+            margin: 0 auto 20px;
         }
-    
-        &___address {
-            text-align: center;
-    
-            &___input {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                margin-bottom: 20px;
-            }
-        }
-    
     }
-
 }

@@ -51,7 +51,7 @@ const OrderSummary = () => {
           )}
         </div>
       ))}
-      <div className={styles.order__price}>Wartość produktów: {orderProductsPrice} zł</div>
+      <p className={styles.order__price}>Wartość produktów: {orderProductsPrice} zł</p>
       <OrderForm productsPrice={orderProductsPrice} />
     </section>
   );
