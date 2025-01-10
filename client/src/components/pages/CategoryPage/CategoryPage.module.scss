@@ -8,15 +8,25 @@
         display: none;
     }
 
-    &__elements {
-        display: grid;
-        gap: 60px;
+    &__products {
+
+        &__title {
+            padding-bottom: 40px;
+            text-align: center;
+        }
+
+        &__elements {
+            display: grid;
+            gap: 60px;
+        }
+    
     }
+
 }
 
 @media (min-width: 37.5rem) {
     
-    .showcase__elements {
+    .showcase__products__elements {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -31,12 +41,16 @@
             display: block;
             margin-left: 40px;
         }
+
+        &__products__title {
+            text-align: start;
+        }
     }
 }
 
 @media (min-width: 75rem) {
 
-    .showcase__elements {
+    .showcase__products__elements {
         grid-template-columns: repeat(3, 1fr);
         gap: 70px;
     }
