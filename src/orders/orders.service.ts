@@ -1,6 +1,7 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { PrismaService } from 'src/shared/services/prisma.service';
 import { Order } from '@prisma/client';
+import { CreateOrderDTO } from './dtos/create-order.dto';
 
 @Injectable()
 export class OrdersService {
@@ -21,16 +22,14 @@ export class OrdersService {
       where: { id },
     });
   }
-  public async create(
-    orderData: Omit<Order, 'id' | 'createdAt' | 'updatedAt'>,
-  ): Promise<Order> {
-    const { productId, ...otherData } = orderData;
+  public async create(orderData: CreateOrderDTO): Promise<Order> {
+    const { productIds, ...otherData } = orderData;
     try {
       return await this.prismaService.order.create({
         data: {
           ...otherData,
           products: {
-            connect: { id: productId },
+            connect: productIds.map((id) => ({ id })),
           },
         },
       });
@@ -39,20 +38,5 @@ export class OrdersService {
         throw new BadRequestException("Product doesn't exist");
       throw error;
     }
-  }
-  public updateById(
-    id: Order['id'],
-    orderData: Omit<Order, 'id' | 'createdAt' | 'updatedAt'>,
-  ): Promise<Order> {
-    const { productId, ...otherData } = orderData;
-    return this.prismaService.order.update({
-      where: { id },
-      data: {
-        ...otherData,
-        products: {
-          connect: { id: productId },
-        },
-      },
-    });
   }
 }

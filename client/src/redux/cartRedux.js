@@ -3,6 +3,12 @@ import initialState from './initialState';
 //selectors
 export const getAllCartProducts = ({ cart }) => cart.products;
 export const getAllDeliveryForms = ({ products }) => products.deliveryForms;
+export const getComments = ({ cart }) =>
+  cart.products
+    .map((product) =>
+      product.comment ? product.name + ': ' + product.comment : '',
+    )
+    .toString();
 
 // actions
 const createActionName = (actionName) => `app/cart/${actionName}`;

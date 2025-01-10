@@ -5,8 +5,10 @@ import { useState } from 'react';
 import { getAllDeliveryForms } from '../../../redux/cartRedux';
 import Button from '../../common/Button/Button';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import { API_URL } from '../../../config';
 
-const OrderForm = ({ productsPrice }) => {
+const OrderForm = ({ productsPrice, comment, products }) => {
   const deliveryForms = useSelector(getAllDeliveryForms);
   const [selectedDelivery, setSelectedDelivery] = useState(
     deliveryForms[0].name,
@@ -34,7 +36,13 @@ const OrderForm = ({ productsPrice }) => {
     data.delivery = selectedDelivery;
     data.price_products = productsPrice;
     data.price_total = totalPrice;
+    data.comment = comment;
+    data.productId = products;
     console.log(data);
+
+    axios.post(`${API_URL}/api/orders`, data).then((response) => {
+      console.log(response);
+    });
   };
 
   return (
@@ -104,6 +112,8 @@ const OrderForm = ({ productsPrice }) => {
 
 OrderForm.propTypes = {
   productsPrice: PropTypes.number.isRequired,
+  comment: PropTypes.string,
+  products: PropTypes.string.isRequired,
 };
 
 export default OrderForm;

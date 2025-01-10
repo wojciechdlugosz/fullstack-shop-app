@@ -6,12 +6,10 @@ import {
   ParseUUIDPipe,
   Delete,
   Post,
-  Put,
   Body,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDTO } from './dtos/create-order.dto';
-import { UpdateOrderDTO } from './dtos/update-order-dto';
 
 @Controller('orders')
 export class OrdersController {
@@ -41,17 +39,5 @@ export class OrdersController {
   @Post('/')
   create(@Body() orderData: CreateOrderDTO) {
     return this.ordersService.create(orderData);
-  }
-
-  @Put('/:id')
-  async updateById(
-    @Param('id', new ParseUUIDPipe()) id: string,
-    @Body() orderData: UpdateOrderDTO,
-  ) {
-    if (!(await this.ordersService.getById(id)))
-      throw new NotFoundException('Order not found');
-
-    await this.ordersService.updateById(id, orderData);
-    return { success: true };
   }
 }
