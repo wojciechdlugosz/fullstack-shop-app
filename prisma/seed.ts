@@ -4,7 +4,7 @@ const db = new PrismaClient();
 function getProducts() {
   return [
     {
-      id: 'ed105551-1f0d-5a9f-tc41-r559c8a17256',
+      id: 'a920c7b9-b67d-7edb-9ce7-f3c9f3889e53',
       name: 'Austrotherm EPS 100',
       price: 77,
       description_title:
@@ -25,7 +25,7 @@ function getProducts() {
       weight: 18,
     },
     {
-      id: 'm920c7b9-b67d-7edb-9ce7-f3c9f3889e56',
+      id: 'a920c7b9-b67d-7edb-9ce7-f3c9f3889e56',
       name: 'Austrotherm EXPERT',
       price: 117,
       description_title: 'Zielony styropian o dużej wytrzymałości na wilgoć i obciążenia CS(10) 120 kPa.',

@@ -10,7 +10,7 @@ import Counter from '../../common/Counter/Counter';
 import Gallery from '../../features/Gallery/Gallery';
 import SideCartSummary from '../../features/SideCartSummary/SideCartSummary';
 import { getRequests } from '../../../redux/productsRedux';
-import { BsBagHeartFill } from 'react-icons/bs';
+import { BsBagPlusFill } from 'react-icons/bs';
 import { getAllCartProducts } from '../../../redux/cartRedux';
 import { addToCartFunction } from '../../../utils/addToCartFunction';
 
@@ -102,7 +102,7 @@ const ProductPage = () => {
             </span>
             <div className={styles.product__description___cartAdd}>
               <Counter countProduct={setAmout} />
-              <Button content={<BsBagHeartFill />} onClick={handleAddToCart} />
+              <Button content={<BsBagPlusFill />} onClick={handleAddToCart} />
             </div>
             <div>
               <h2>{product.description_title}</h2>
@@ -114,7 +114,7 @@ const ProductPage = () => {
             <p>PARAMETRY:</p>
             {product.volume ? <p>objętość: {product.volume} m3</p> : ''}
             {product.height ? <p>wysokość: {product.height} m</p> : ''}
-            {product.weight ? <p>waga: {product.weight} kg</p> : ''}
+            {product.weight ? <p>waga: {product.weight} kg / m3</p> : ''}
             {product.length ? <p>długość: {product.length} m</p> : ''}
             {product.width ? <p>szerokość: {product.width} m</p> : ''}
             </div>

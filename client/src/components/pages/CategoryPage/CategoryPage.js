@@ -32,6 +32,7 @@ const CategoryPage = () => {
   }
 
   return (
+    
     <section className={styles.showcase}>
 
       <aside className={styles.showcase__nav}>

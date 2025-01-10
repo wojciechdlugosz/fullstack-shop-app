@@ -4,16 +4,25 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { getAllDeliveryForms } from '../../../redux/cartRedux';
 import Button from '../../common/Button/Button';
+import PropTypes from 'prop-types';
 
-const OrderForm = () => {
+const OrderForm = ({ productsPrice }) => {
   const deliveryForms = useSelector(getAllDeliveryForms);
   const [selectedDelivery, setSelectedDelivery] = useState(
     deliveryForms[0].name,
   );
+  const [deliveryPrice, setDeliveryPrice] = useState(deliveryForms[0].price);
 
   const handleDeliveryChange = (e) => {
-    setSelectedDelivery(e.target.value);
+    const selectedOption = e.target.value;
+    setSelectedDelivery(selectedOption);
+    const selectedPrice = deliveryForms.find(
+      (form) => form.name === selectedOption,
+    ).price;
+    setDeliveryPrice(selectedPrice);
   };
+
+  const totalPrice = productsPrice + deliveryPrice;
 
   const {
     register,
@@ -23,6 +32,8 @@ const OrderForm = () => {
 
   const onSubmit = (data) => {
     data.delivery = selectedDelivery;
+    data.price_products = productsPrice;
+    data.price_total = totalPrice;
     console.log(data);
   };
 
@@ -44,11 +55,13 @@ const OrderForm = () => {
                 type="radio"
                 name="deliveryOption"
                 value={delivery.name}
+                price={delivery.price}
                 checked={selectedDelivery === delivery.name}
                 onChange={handleDeliveryChange}
               />
             </label>
           ))}
+          <div>Razem: {totalPrice} zł</div>
         </div>
         <h2>Adres dostawy</h2>
         <div
@@ -95,6 +108,10 @@ const OrderForm = () => {
       </form>
     </div>
   );
+};
+
+OrderForm.propTypes = {
+  productsPrice: PropTypes.number.isRequired,
 };
 
 export default OrderForm;

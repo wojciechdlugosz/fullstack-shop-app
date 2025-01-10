@@ -26,7 +26,6 @@ const initialState = {
         id: 1,
         name: 'Paczkomat',
         price: 15,
-        checked: true,
       },
       {
         id: 2,

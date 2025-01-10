@@ -6,6 +6,10 @@ import OrderForm from '../../features/OrderForm/OrderForm';
 const OrderSummary = () => {
   const orderProducts = useSelector(getAllCartProducts);
 
+  const orderProductsPrice = orderProducts.reduce((total, product) => {
+    return total + product.price * product.amount;
+  }, 0);
+
   return (
     <section className={styles.order}>
       <h1 className={styles.order__title}>podsumowanie zamówienia</h1>
@@ -47,7 +51,8 @@ const OrderSummary = () => {
           )}
         </div>
       ))}
-      <OrderForm />
+      <div className={styles.order__price}>Wartość produktów: {orderProductsPrice} zł</div>
+      <OrderForm productsPrice={orderProductsPrice} />
     </section>
   );
 };
