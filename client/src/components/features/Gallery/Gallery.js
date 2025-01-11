@@ -4,12 +4,30 @@ import { IMGS_URL } from '../../../config';
 
 const Gallery = ({ defaultImg, alt, imgs }) => {
   const [image, setImage] = useState(defaultImg);
+  const [expanded, setExpanded] = useState(false);
 
   const gallery = imgs.split(',');
 
   return (
     <section className={styles.gallery}>
-      <img className={styles.gallery__img} src={IMGS_URL + image} alt={alt} />
+      {expanded && (
+        <div
+          className={styles.gallery__modal}
+          onClick={() => setExpanded(false)}
+        >
+          <img
+            className={styles.gallery__modal___img}
+            src={IMGS_URL + image}
+            alt={alt}
+          />
+        </div>
+      )}
+      <img
+        className={styles.gallery__img}
+        src={IMGS_URL + image}
+        alt={alt}
+        onClick={() => setExpanded(true)}
+      />
       <div className={styles.gallery__min}>
         <img
           onClick={() => setImage(defaultImg)}
