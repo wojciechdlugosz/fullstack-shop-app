@@ -100,6 +100,7 @@ const Cart = () => {
           </div>
           <div className={styles.cart__product__button}>
             <Button
+              type="button"
               content={<FaRegTrashAlt />}
               onClick={() => handleDelete(product.id)}
             />
@@ -108,12 +109,13 @@ const Cart = () => {
       ))}
       {cartProducts.length > 0 ? (
         <Link to="/order">
-          <Button content="podsumowanie zamówienia" />
+          <Button type="button" content="podsumowanie zamówienia" />
         </Link>
       ) : (
         <>
           <p>Koszyk jest pusty</p>
           <Button
+            type="button"
             content={<IoMdArrowRoundBack />}
             onClick={() => navigate(-1)}
           />

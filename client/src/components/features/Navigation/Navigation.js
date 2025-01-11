@@ -17,6 +17,7 @@ const Navigation = () => {
         }`}
       >
         <button
+          type="button"
           className={styles.navigation__btn___hide}
           onClick={() => setIsNavShown(false)}
         >
@@ -57,11 +58,12 @@ const Navigation = () => {
                 : styles.navigation__linkList__link
             }
           >
-            o nas
+            o marce
           </NavLink>
         </ul>
       </nav>
       <button
+        type="button"
         className={styles.navigation__btn___show}
         onClick={() => setIsNavShown(true)}
       >

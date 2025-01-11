@@ -10,6 +10,7 @@ const Counter = ({ number, countProduct }) => {
 
   useEffect(() => {
     countProduct(count);
+    //eslint-disable-next-line
   }, [count]);
 
   const handleDecrement = () => {
@@ -18,9 +19,13 @@ const Counter = ({ number, countProduct }) => {
 
   return (
     <div className={styles.counter}>
-      <Button onClick={handleDecrement} content={<FaMinus />} />
+      <Button type="button" onClick={handleDecrement} content={<FaMinus />} />
       <input value={count} className={styles.counter__input} readOnly />
-      <Button onClick={() => setCount(count + 1)} content={<FaPlus />} />
+      <Button
+        type="button"
+        onClick={() => setCount(count + 1)}
+        content={<FaPlus />}
+      />
     </div>
   );
 };

@@ -90,6 +90,7 @@ const ProductPage = () => {
       {request && request.success && (
         <>
           <Button
+            type="button"
             content={<IoMdArrowRoundBack />}
             onClick={() => navigate(-1)}
           />
@@ -111,6 +112,7 @@ const ProductPage = () => {
               <div className={styles.product__description___cartAdd}>
                 <Counter countProduct={setAmout} />
                 <Button
+                  type="button"
                   content={<BsBagPlusFill />}
                   onClick={handleAddToCart}
                 />
@@ -138,4 +140,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default ProductPage;         

@@ -42,9 +42,13 @@ const ProductSummary = ({ id, img, name, price }) => {
       </div>
       <div className={styles.productBox__buttons}>
         <Link to={`/product/${id}`}>
-          <Button content={<FaEye />} />
+          <Button type="button" content={<FaEye />} />
         </Link>
-        <Button content={<BsBagPlusFill />} onClick={handleAddToCart} />
+        <Button
+          type="button"
+          content={<BsBagPlusFill />}
+          onClick={handleAddToCart}
+        />
       </div>
       {sideCartSummary && <SideCartSummary />}
     </div>

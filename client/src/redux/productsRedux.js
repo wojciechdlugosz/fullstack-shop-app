@@ -1,6 +1,7 @@
 import { API_URL } from '../config';
 import axios from 'axios';
 import initialState from './initialState';
+import { createSelector } from '@reduxjs/toolkit';
 
 //selectors
 export const getAllProducts = ({ products }) => products.data;
@@ -8,8 +9,13 @@ export const getAllCategories = ({ products }) => products.categories;
 export const getRequests = ({ products }) => products.requests;
 export const getProductById = ({ products }, productId) =>
   products.data.find((product) => product.id === productId);
-export const getProductsByCategory = ({ products }, category) =>
-  products.data.filter((product) => product.category === category);
+  
+const selectProducts = (state) => state.products;
+export const getProductsByCategory = createSelector(
+  [selectProducts, (_, category) => category],
+  (products, category) =>
+    products.data.filter((product) => product.category === category),
+);
 
 // actions
 const createActionName = (actionName) => `app/products/${actionName}`;
