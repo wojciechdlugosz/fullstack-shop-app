@@ -21,6 +21,10 @@ const ProductPage = () => {
 
   const { id } = useParams();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   const requests = useSelector(getRequests);
   const request = requests['app/products/DATA_PRODUCTS'];
 

@@ -2,6 +2,7 @@ import ProductSummary from '../../common/ProductSummary/ProductSummary';
 import NotFound from '../../views/NotFound/NotFound';
 import Spinner from '../../common/Spinner/Spinner';
 import SideNavigation from '../../features/SideNavigation/SideNavigation';
+import ScrollTopButton from '../../features/ScrollTopButton/ScrollTopButton';
 import styles from './CategoryPage.module.scss';
 import { useParams } from 'react-router-dom';
 import {
@@ -54,30 +55,33 @@ const CategoryPage = () => {
         <p>O nie, coś poszło nie tak :( Spróbuj później</p>
       )}
       {request && request.success && (
-        <div className={styles.showcase__products}>
-          <h1 className={styles.showcase__products__title}>{categoryName}</h1>
-          <div className={styles.showcase__products__elements}>
-            {category === 'all'
-              ? allProducts.map(({ id, main_img, name, price }) => (
-                  <ProductSummary
-                    key={id}
-                    id={id}
-                    img={main_img}
-                    name={name}
-                    price={price}
-                  />
-                ))
-              : categoryProducts.map(({ id, main_img, name, price }) => (
-                  <ProductSummary
-                    key={id}
-                    id={id}
-                    img={main_img}
-                    name={name}
-                    price={price}
-                  />
-                ))}
+        <>
+          <ScrollTopButton />
+          <div className={styles.showcase__products}>
+            <h1 className={styles.showcase__products__title}>{categoryName}</h1>
+            <div className={styles.showcase__products__elements}>
+              {category === 'all'
+                ? allProducts.map(({ id, main_img, name, price }) => (
+                    <ProductSummary
+                      key={id}
+                      id={id}
+                      img={main_img}
+                      name={name}
+                      price={price}
+                    />
+                  ))
+                : categoryProducts.map(({ id, main_img, name, price }) => (
+                    <ProductSummary
+                      key={id}
+                      id={id}
+                      img={main_img}
+                      name={name}
+                      price={price}
+                    />
+                  ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </section>
   );
