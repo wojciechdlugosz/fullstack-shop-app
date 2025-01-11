@@ -33,6 +33,10 @@ const CategoryPage = () => {
     }
   }, [category, categories]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [category]);
+
   if (
     !categories.some((cat) => cat.name === category) &&
     !(category === 'all')

@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IMGS_URL } from '../../../config';
 import Counter from './../../common/Counter/Counter';
 import Button from '../../common/Button/Button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +18,10 @@ import { Link } from 'react-router-dom';
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const cartProducts = useSelector(getAllCartProducts);
 

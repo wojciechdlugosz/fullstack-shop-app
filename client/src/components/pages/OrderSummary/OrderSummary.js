@@ -6,12 +6,17 @@ import {
 } from '../../../redux/cartRedux';
 import { useSelector } from 'react-redux';
 import OrderForm from '../../features/OrderForm/OrderForm';
+import { useEffect } from 'react';
 
 const OrderSummary = () => {
   const orderProducts = useSelector(getAllCartProducts);
   const productComments = useSelector(getComments);
   const orderProductsPrice = useSelector(getAllProductsPrice);
   const orderProductsIds = orderProducts.map((product) => product.id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className={styles.order}>

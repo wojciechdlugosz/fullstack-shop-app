@@ -119,7 +119,7 @@ function getProducts() {
         'Deklarowany współczynnik przewodzenia ciepła: λD≤0,031 W/mK. Naprężenia ściskające przy 10% odkształceniu: CS(10)≥100 kPa. Wytrzymałość na zginanie: BS≥150 kPa. Minimalna waga wyrobu: 18,0 kg/m3. Klasa reakcji na ogień: E.',
       category: 'podloga',
       main_img: 'austrotherm_eps_premium_100_1.jpg',
-      gallery: 'austrotherm_eps_premium_100_1.jpg,austrotherm_eps_premium_100_1.jpg,austrotherm_eps_premium_100_1.jpg',
+      gallery: 'austrotherm_eps_premium_100_2.jpg,austrotherm_eps_premium_100_3.jpg,austrotherm_eps_premium_100_4.jpg',
       volume: 0.3,
       width: 1,
       length: 0.5,
