@@ -9,6 +9,10 @@ export const getComments = ({ cart }) =>
       product.comment ? product.name + ': ' + product.comment : '',
     )
     .toString();
+export const getAllProductsPrice = ({ cart }) =>
+  cart.products.reduce((total, product) => {
+    return total + product.price * product.amount;
+  }, 0);
 
 // actions
 const createActionName = (actionName) => `app/cart/${actionName}`;
@@ -16,6 +20,7 @@ const createActionName = (actionName) => `app/cart/${actionName}`;
 const ADD_PRODUCT = createActionName('ADD_PRODUCT');
 const ADD_SAME_PRODUCT = createActionName('ADD_SAME_PRODUCT');
 const REMOVE_PRODUCT = createActionName('REMOVE_PRODUCT');
+const REMOVE_ALL_PRODUCTS = createActionName('REMOVE_ALL_PRODUCTS');
 const ADD_COMMENT = createActionName('ADD_COMMENT');
 const CHANGE_AMOUNT = createActionName('CHANGE_AMOUNT');
 
@@ -28,6 +33,10 @@ export const addSameProduct = (payload) => ({
 export const removeCartProduct = (payload) => ({
   payload,
   type: REMOVE_PRODUCT,
+});
+export const removeAllCartProducts = (payload) => ({
+  payload,
+  type: REMOVE_ALL_PRODUCTS,
 });
 export const addComment = (payload) => ({ payload, type: ADD_COMMENT });
 export const changeAmount = (payload) => ({ payload, type: CHANGE_AMOUNT });
@@ -56,6 +65,12 @@ const cartReducer = (statePart = initialState, action = {}) => {
         products: statePart.products.filter(
           (product) => product.id !== action.payload,
         ),
+      };
+    }
+    case REMOVE_ALL_PRODUCTS: {
+      return {
+        ...statePart,
+        products: [],
       };
     }
     case ADD_COMMENT: {

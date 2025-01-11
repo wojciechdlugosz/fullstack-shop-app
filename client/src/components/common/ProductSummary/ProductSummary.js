@@ -2,7 +2,7 @@ import styles from './ProductSummary.module.scss';
 import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import { FaEye } from 'react-icons/fa';
-import { BsBagHeartFill } from 'react-icons/bs';
+import { BsBagPlusFill } from 'react-icons/bs';
 import { IMGS_URL } from '../../../config';
 import { getAllCartProducts } from '../../../redux/cartRedux';
 import { useSelector, useDispatch } from 'react-redux';
@@ -44,7 +44,7 @@ const ProductSummary = ({ id, img, name, price }) => {
         <Link to={`/product/${id}`}>
           <Button content={<FaEye />} />
         </Link>
-        <Button content={<BsBagHeartFill />} onClick={handleAddToCart} />
+        <Button content={<BsBagPlusFill />} onClick={handleAddToCart} />
       </div>
       {sideCartSummary && <SideCartSummary />}
     </div>

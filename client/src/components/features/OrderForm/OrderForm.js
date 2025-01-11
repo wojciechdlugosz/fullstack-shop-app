@@ -1,14 +1,21 @@
 import styles from './OrderForm.module.scss';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { getAllDeliveryForms } from '../../../redux/cartRedux';
+import { useNavigate } from 'react-router-dom';
+import {
+  getAllDeliveryForms,
+  removeAllCartProducts,
+} from '../../../redux/cartRedux';
 import Button from '../../common/Button/Button';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { API_URL } from '../../../config';
 
 const OrderForm = ({ productsPrice, comment, products }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const deliveryForms = useSelector(getAllDeliveryForms);
   const [selectedDelivery, setSelectedDelivery] = useState(
     deliveryForms[0].name,
@@ -37,11 +44,16 @@ const OrderForm = ({ productsPrice, comment, products }) => {
     data.price_products = productsPrice;
     data.price_total = totalPrice;
     data.comment = comment;
-    data.productId = products;
-    console.log(data);
+    data.productIds = products;
 
     axios.post(`${API_URL}/api/orders`, data).then((response) => {
-      console.log(response);
+      if (response.status === 201) {
+        console.log(data);
+        dispatch(removeAllCartProducts());
+        navigate('/order/success');
+      } else {
+        return <p>Coś poszło nie tak</p>;
+      }
     });
   };
 
@@ -113,7 +125,7 @@ const OrderForm = ({ productsPrice, comment, products }) => {
 OrderForm.propTypes = {
   productsPrice: PropTypes.number.isRequired,
   comment: PropTypes.string,
-  products: PropTypes.string.isRequired,
+  products: PropTypes.array.isRequired,
 };
 
 export default OrderForm;

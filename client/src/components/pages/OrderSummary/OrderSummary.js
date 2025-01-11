@@ -1,16 +1,17 @@
 import styles from './OrderSummary.module.scss';
-import { getAllCartProducts, getComments } from '../../../redux/cartRedux';
+import {
+  getAllCartProducts,
+  getComments,
+  getAllProductsPrice,
+} from '../../../redux/cartRedux';
 import { useSelector } from 'react-redux';
 import OrderForm from '../../features/OrderForm/OrderForm';
 
 const OrderSummary = () => {
   const orderProducts = useSelector(getAllCartProducts);
   const productComments = useSelector(getComments);
-
-  const orderProductsPrice = orderProducts.reduce((total, product) => {
-    return total + product.price * product.amount;
-  }, 0);
-  const productsOrdered = orderProducts.map((product) => product.id);
+  const orderProductsPrice = useSelector(getAllProductsPrice);
+  const orderProductsIds = orderProducts.map((product) => product.id);
 
   return (
     <section className={styles.order}>
@@ -53,8 +54,14 @@ const OrderSummary = () => {
           )}
         </div>
       ))}
-      <p className={styles.order__price}>Wartość produktów: {orderProductsPrice} zł</p>
-      <OrderForm productsPrice={orderProductsPrice} comment={productComments} products={productsOrdered} />
+      <p className={styles.order__price}>
+        Wartość produktów: {orderProductsPrice} zł
+      </p>
+      <OrderForm
+        productsPrice={orderProductsPrice}
+        comment={productComments}
+        products={orderProductsIds}
+      />
     </section>
   );
 };

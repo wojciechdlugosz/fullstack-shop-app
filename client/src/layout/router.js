@@ -3,6 +3,7 @@ import CategoryPage from '../components/pages/CategoryPage/CategoryPage';
 import ProductPage from '../components/pages/ProductPage/ProductPage';
 import Cart from '../components/pages/Cart/Cart';
 import OrderSummary from '../components/pages/OrderSummary/OrderSummary';
+import OrderSuccess from '../components/pages/OrderSuccess/OrderSuccess';
 import About from '../components/pages/About/About';
 import NotFound from '../components/views/NotFound/NotFound';
 import RootLayout from './RootLayout';
@@ -20,6 +21,7 @@ export const router = createBrowserRouter(
       <Route path="product/:id" element={<ProductPage />} />
       <Route path="cart" element={<Cart />} />
       <Route path="order" element={<OrderSummary />} />
+      <Route path="order/success" element={<OrderSuccess />} />
       <Route path="about" element={<About />} />
       <Route path="*" element={<NotFound />} />
     </Route>,

@@ -1,0 +1,10 @@
+@import '../../../styles/settings.scss';
+
+.info {
+    margin: 0 30px;
+    text-align: center;
+    &___icon {
+        color: $color-primary;
+        font-size: 2rem;
+    }
+}
